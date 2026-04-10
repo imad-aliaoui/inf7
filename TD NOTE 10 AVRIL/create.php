@@ -38,7 +38,7 @@ if ($existing) {
     $shortCode = getUniqueShortCode($pdo);
 
     $stmt = $pdo->prepare(
-        'INSERT INTO short_urls (original_url, short_code) 
+        'INSERT INTO short_urls (original_url, short_code)
          VALUES (:original_url, :short_code)'
     );
     $stmt->execute([

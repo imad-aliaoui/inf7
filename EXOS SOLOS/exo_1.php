@@ -22,4 +22,3 @@ function afficher($nombres) {
 
 $nombres = [5, 2, 9, 8, 1, 4, 7, 6];
 afficher($nombres);
-?>

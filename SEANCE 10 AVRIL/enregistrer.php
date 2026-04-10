@@ -1,5 +1,5 @@
 <?php
-require_once("connexion.php");
+require_once"connexion.php";
 
 $nom = $_POST['nom'] ?? '';
 $prenom = $_POST['prenom'] ?? '';
