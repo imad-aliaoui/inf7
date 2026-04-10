@@ -17,5 +17,6 @@ try {
         ]
     );
 } catch (PDOException $e) {
+    // on affiche pas le message en prod pour des raisons de sécurité
     die('Erreur de connexion à la base de données.');
 }
