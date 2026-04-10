@@ -47,37 +47,32 @@ function getUniqueShortCode(PDO $pdo, int $length = 6): string
     return $code;
 }
 
-function incrementVisitorCounter(): int
+function incrementVisitorCounter(PDO $pdo): int
 {
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }
 
-    if (function_exists('apcu_fetch') && ini_get('apc.enabled')) {
-        if (!isset($_SESSION['counted_once'])) {
-            apcu_inc('url_shortener_visitors', 1, $success);
-            if (!$success) {
-                apcu_store('url_shortener_visitors', 1);
-            }
-            $_SESSION['counted_once'] = true;
-        }
-
-        $count = apcu_fetch('url_shortener_visitors');
-        return is_int($count) ? $count : 0;
-    }
-
-    $counterFile = __DIR__ . '/counter.txt';
-
-    if (!file_exists($counterFile)) {
-        file_put_contents($counterFile, '0');
-    }
-
     if (!isset($_SESSION['counted_once'])) {
-        $current = (int) file_get_contents($counterFile);
-        $current++;
-        file_put_contents($counterFile, (string) $current);
+        $update = $pdo->prepare(
+            'UPDATE app_stats
+             SET stat_value = stat_value + 1
+             WHERE stat_key = :stat_key'
+        );
+        $update->execute(['stat_key' => 'visitor_count']);
+
         $_SESSION['counted_once'] = true;
     }
 
-    return (int) file_get_contents($counterFile);
+    $select = $pdo->prepare(
+        'SELECT stat_value
+         FROM app_stats
+         WHERE stat_key = :stat_key
+         LIMIT 1'
+    );
+    $select->execute(['stat_key' => 'visitor_count']);
+
+    $result = $select->fetch();
+
+    return $result ? (int) $result['stat_value'] : 0;
 }

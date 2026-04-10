@@ -1,12 +1,10 @@
 <?php
 declare(strict_types=1);
+
+require_once 'config.php';
 require_once 'functions.php';
 
-$visitorCount = incrementVisitorCounter();
-$baseUrl = rtrim(dirname((isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']), '/\\');
-if ($baseUrl === '') {
-    $baseUrl = '.';
-}
+$visitorCount = incrementVisitorCounter($pdo);
 
 $success = $_GET['success'] ?? '';
 $error = $_GET['error'] ?? '';
@@ -27,7 +25,7 @@ $originalUrl = $_GET['original_url'] ?? '';
         <div class="badge">Compteur visiteurs : <?php echo $visitorCount; ?></div>
         <h1>Mini URL</h1>
         <p class="subtitle">
-            Raccourcis tes liens en un clic. Interface simple, propre, rapide et agréable à utiliser.
+            Raccourcis tes liens en un clic.
         </p>
 
         <?php if ($success === '1' && $shortUrl !== ''): ?>
@@ -35,7 +33,7 @@ $originalUrl = $_GET['original_url'] ?? '';
                 <strong>URL raccourcie créée avec succès.</strong>
                 <p><span>Lien d’origine :</span> <?php echo htmlspecialchars($originalUrl); ?></p>
                 <p><span>Lien court :</span>
-                    <a href="<?php echo htmlspecialchars($shortUrl); ?>" target="_blank">
+                    <a href="<?php echo htmlspecialchars($shortUrl); ?>" target="_blank" rel="noopener noreferrer">
                         <?php echo htmlspecialchars($shortUrl); ?>
                     </a>
                 </p>
@@ -51,13 +49,12 @@ $originalUrl = $_GET['original_url'] ?? '';
         <form action="create.php" method="post" class="shortener-form">
             <label for="url">URL à raccourcir</label>
             <input
-                type="url"
-                id="url"
-                name="url"
-                placeholder="https://exemple.com/mon-lien-super-long"
-                required
+                    type="url"
+                    id="url"
+                    name="url"
+                    placeholder="https://exemple.com/mon-lien-looooooong"
+                    required
             >
-
             <button type="submit">Raccourcir l’URL</button>
         </form>
     </section>

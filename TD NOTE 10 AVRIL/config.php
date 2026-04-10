@@ -17,5 +17,5 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    die('Erreur de connexion à la base de données : ' . htmlspecialchars($e->getMessage()));
+    die('Erreur de connexion à la base de données.');
 }
