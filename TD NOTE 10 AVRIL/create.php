@@ -22,7 +22,6 @@ if (!isValidUrl($url)) {
     exit;
 }
 
-// Si l'URL existe déjà, on réutilise le même code
 $stmt = $pdo->prepare('SELECT short_code FROM short_urls WHERE original_url = :original_url LIMIT 1');
 $stmt->execute(['original_url' => $url]);
 $existing = $stmt->fetch();

@@ -47,11 +47,6 @@ function getUniqueShortCode(PDO $pdo, int $length = 6): string
     return $code;
 }
 
-/**
- * Compteur depuis le dernier lancement serveur.
- * Version idéale : APCu, qui se vide au redémarrage du serveur web.
- * Repli : variable de session + fichier local si APCu absent.
- */
 function incrementVisitorCounter(): int
 {
     if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -71,7 +66,6 @@ function incrementVisitorCounter(): int
         return is_int($count) ? $count : 0;
     }
 
-    // Repli si APCu n'est pas dispo
     $counterFile = __DIR__ . '/counter.txt';
 
     if (!file_exists($counterFile)) {
