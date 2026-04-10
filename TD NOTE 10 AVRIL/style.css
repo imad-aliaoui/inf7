@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f5f7fb, #e9eef8);
+    color: #1f2937;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    color: #4b5563;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-block;
+    background: #111827;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+}
+
+.shortener-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.shortener-form label {
+    font-weight: bold;
+}
+
+.shortener-form input {
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.shortener-form input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.shortener-form button {
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.shortener-form button:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+}
+
+.alert {
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.alert.success {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert.error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert span {
+    font-weight: bold;
+}
+
+.tips h2 {
+    margin-top: 0;
+}
+
+.tips ul {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+a {
+    color: #2563eb;
+    word-break: break-all;
+}
+
+@media (max-width: 640px) {
+    .container {
+        margin: 20px auto;
+        padding: 14px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+}
