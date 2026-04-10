@@ -48,7 +48,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
 <p><strong>Puissance totale :</strong> <?php echo $puissance_totale; ?> W</p>
 
 <br>
-<a href="formulaire.php">Retour au formulaire</a>
+<a href="../SEANCE%2010%20AVRIL/formulaire.php">Retour au formulaire</a>
 
 </body>
 </html>
