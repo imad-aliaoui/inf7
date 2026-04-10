@@ -61,18 +61,6 @@ $originalUrl = $_GET['original_url'] ?? '';
             <button type="submit">Raccourcir l’URL</button>
         </form>
     </section>
-
-    <section class="card tips">
-        <h2>Pourquoi ce site est propre côté qualimétrie</h2>
-        <ul>
-            <li>Validation des entrées</li>
-            <li>Requêtes préparées PDO</li>
-            <li>Code séparé par responsabilités</li>
-            <li>Design responsive et lisible</li>
-            <li>Messages d’erreur clairs</li>
-            <li>Redirection automatique fiable</li>
-        </ul>
-    </section>
 </main>
 </body>
 </html>
