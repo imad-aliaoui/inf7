@@ -10,7 +10,7 @@
 <h1>Student Party Corp</h1>
 <h2>Formulaire d'inscription DJ</h2>
 
-<form action="traitement.php" method="post" enctype="multipart/form-data">
+<form action="enregistrer.php" method="post" enctype="multipart/form-data">
 
     <fieldset>
         <legend>Informations personnelles</legend>
@@ -23,12 +23,12 @@
         <input type="text" id="prenom" name="prenom" required>
         <br><br>
 
-        <label for="mail">E-mail :</label>
-        <input type="email" id="mail" name="mail" required>
+        <label for="email">E-mail :</label>
+        <input type="email" id="email" name="email" required>
         <br><br>
 
         <label for="telephone">Numéro de téléphone :</label>
-        <input type="tel" id="telephone" name="telephone" required>
+        <input type="tel" id="telephone" name="telephone">
         <br><br>
 
         <label for="portfolio">URL du portfolio :</label>
@@ -42,11 +42,11 @@
         <legend>Informations sur l'événement</legend>
 
         <label for="date_soiree">Date de la soirée :</label>
-        <input type="date" id="date_soiree" name="date_soiree" required>
+        <input type="date" id="date_soiree" name="date_soiree">
         <br><br>
 
         <label for="materiel">Le DJ vient-il avec son matériel ?</label>
-        <input type="checkbox" id="materiel" name="materiel" value="oui">
+        <input type="checkbox" id="materiel" name="materiel" value="Oui">
         <br><br>
 
         <label for="couleur">Couleur favorite :</label>
@@ -63,12 +63,24 @@
     <fieldset>
         <legend>Matériel audio</legend>
 
-        <label for="nb_enceintes">Nombre d’enceintes :</label>
-        <input type="number" id="nb_enceintes" name="nb_enceintes" min="0" required>
+        <h4>Chaîne 1</h4>
+
+        <label for="nb_enceintes1">Nombre d’enceintes :</label>
+        <input type="number" id="nb_enceintes1" name="nb_enceintes1" min="0">
         <br><br>
 
-        <label for="puissance_enceinte">Puissance des enceintes (en watts) :</label>
-        <input type="number" id="puissance_enceinte" name="puissance_enceinte" min="0" required>
+        <label for="puissance1">Puissance (W) :</label>
+        <input type="number" id="puissance1" name="puissance1" min="0">
+        <br><br>
+
+        <h4>Chaîne 2</h4>
+
+        <label for="nb_enceintes2">Nombre d’enceintes :</label>
+        <input type="number" id="nb_enceintes2" name="nb_enceintes2" min="0">
+        <br><br>
+
+        <label for="puissance2">Puissance (W) :</label>
+        <input type="number" id="puissance2" name="puissance2" min="0">
         <br><br>
     </fieldset>
 
