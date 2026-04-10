@@ -67,7 +67,7 @@ if (!isset($_SESSION['nb_visites'])) {
 <hr>
 
 <h3>Envoi avec POST</h3>
-<form action="traitement_post.php" method="post" enctype="multipart/form-data">
+<form action="enregistrer.php" method="post" enctype="multipart/form-data">
     <label>Nom :</label>
     <input type="text" name="nom" required><br><br>
 
@@ -108,6 +108,15 @@ if (!isset($_SESSION['nb_visites'])) {
     <input type="number" name="puissance2" min="0"><br><br>
 
     <input type="submit" value="Envoyer en POST">
+</form>
+
+<hr>
+
+<h3>Suppression d'un DJ par email</h3>
+<form action="supprimer.php" method="post">
+    <label>Email à supprimer :</label>
+    <input type="email" name="email" required>
+    <input type="submit" value="Supprimer">
 </form>
 
 </body>
