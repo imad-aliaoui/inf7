@@ -57,9 +57,9 @@ if (!isset($error) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $photo = $dj['photo'];
     if (empty($errors)) {
-        [$photo, $photoError] = upload_dj_photo($_FILES['photo'] ?? null, $dj['photo']);
-        if ($photoError !== null) {
-            $errors[] = $photoError;
+        [$photo, $photo_error] = upload_dj_photo($_FILES['photo'] ?? null, $dj['photo']);
+        if ($photo_error !== null) {
+            $errors[] = $photo_error;
         }
     }
 
@@ -138,8 +138,8 @@ if (!isset($error) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if (!empty($errors)) : ?>
         <ul>
-            <?php foreach ($errors as $errorItem) : ?>
-                <li><?php echo htmlspecialchars($errorItem); ?></li>
+            <?php foreach ($errors as $error) : ?>
+                <li><?php echo htmlspecialchars($error); ?></li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>

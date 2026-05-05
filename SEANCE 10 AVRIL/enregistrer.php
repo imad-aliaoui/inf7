@@ -30,7 +30,7 @@ if ($email === '') {
 $puissance_totale = $nb_enceintes * $puissance;
 
 $dj = null;
-[$photo, $photoError] = ['', null];
+[$photo, $photo_error] = ['', null];
 if (empty($errors)) {
     $stmt = $pdo->prepare("SELECT id FROM djs WHERE email = :email");
     $stmt->execute(['email' => $email]);
@@ -38,9 +38,9 @@ if (empty($errors)) {
 }
 
 if (empty($errors) && !$dj) {
-    [$photo, $photoError] = upload_dj_photo($_FILES['photo'] ?? null);
-    if ($photoError !== null) {
-        $errors[] = $photoError;
+    [$photo, $photo_error] = upload_dj_photo($_FILES['photo'] ?? null);
+    if ($photo_error !== null) {
+        $errors[] = $photo_error;
     }
 }
 
