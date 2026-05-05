@@ -14,6 +14,7 @@ $nb_enceintes = max(0, (int)($_POST['nb_enceintes'] ?? 0));
 $puissance = max(0, (int)($_POST['puissance'] ?? 0));
 
 $errors = [];
+$instruction = null;
 
 if ($nom === '') {
     $errors[] = 'Le nom est obligatoire.';
@@ -47,7 +48,8 @@ if (empty($errors) && !$dj) {
 if (!empty($errors)) {
     $message = "Votre inscription n'a pas pu être enregistrée.";
 } elseif ($dj) {
-    $message = "Cette adresse email est déjà enregistrée. Aucune mise à jour n'a été effectuée. Contactez l'administration pour modifier les informations.";
+    $message = "Adresse email déjà enregistrée.";
+    $instruction = "Contactez l'administration pour modifier les informations.";
 } else {
     $sql = "INSERT INTO djs
             (nom, prenom, email, telephone, portfolio, date_soiree, materiel, couleur, photo, nb_enceintes1, puissance1, nb_enceintes2, puissance2)
@@ -85,6 +87,10 @@ if (!empty($errors)) {
 
 <h1>Student PARTY CORPORATION</h1>
 <p><?php echo htmlspecialchars($message); ?></p>
+
+<?php if ($instruction) : ?>
+    <p><?php echo htmlspecialchars($instruction); ?></p>
+<?php endif; ?>
 
 <?php if (!empty($errors)) : ?>
     <ul>

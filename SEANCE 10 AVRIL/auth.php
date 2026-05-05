@@ -33,10 +33,10 @@ function require_dj_auth(bool $api = false): void
         http_response_code(500);
         if ($api) {
             header('Content-Type: application/json; charset=UTF-8');
-            echo json_encode(['error' => 'Configuration manquante: DJ_ADMIN_PASS.'], JSON_UNESCAPED_UNICODE);
+            echo json_encode(['error' => 'Erreur de configuration du service.'], JSON_UNESCAPED_UNICODE);
         } else {
             header('Content-Type: text/html; charset=UTF-8');
-            echo '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Configuration requise</title></head><body><h1>Configuration requise</h1><p>Définissez la variable DJ_ADMIN_PASS.</p></body></html>';
+            echo '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Erreur de configuration</title></head><body><h1>Erreur de configuration</h1><p>Le service est momentanément indisponible.</p></body></html>';
         }
         exit;
     }
