@@ -1,20 +1,21 @@
 <?php
-require_once"connexion.php";
+require_once "auth.php";
+require_dj_auth();
+require_once "connexion.php";
 
-$email = $_POST['email'] ?? '';
+$email = trim($_POST['email'] ?? '');
+$id = (int)($_POST['id'] ?? 0);
 
-if (!empty($email)) {
-    $sql = "DELETE FROM djs WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
+if ($id > 0) {
+    $stmt = $pdo->prepare("DELETE FROM djs WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    $message = $stmt->rowCount() > 0 ? "Suppression effectuée." : "Aucun DJ trouvé avec cet identifiant.";
+} elseif ($email !== '') {
+    $stmt = $pdo->prepare("DELETE FROM djs WHERE email = :email");
     $stmt->execute(['email' => $email]);
-
-    if ($stmt->rowCount() > 0) {
-        $message = "Suppression effectuée.";
-    } else {
-        $message = "Aucun DJ trouvé avec cet email.";
-    }
+    $message = $stmt->rowCount() > 0 ? "Suppression effectuée." : "Aucun DJ trouvé avec cet email.";
 } else {
-    $message = "Email non fourni.";
+    $message = "Aucun identifiant ou email fourni.";
 }
 ?>
 
