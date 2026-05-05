@@ -7,7 +7,8 @@ function dj_admin_user(): string
 
 function dj_admin_pass(): string
 {
-    return getenv('DJ_ADMIN_PASS') ?: 'admin123';
+    $value = getenv('DJ_ADMIN_PASS');
+    return $value === false ? '' : $value;
 }
 
 function require_dj_auth(bool $api = false): void
@@ -27,6 +28,18 @@ function require_dj_auth(bool $api = false): void
 
     $expectedUser = dj_admin_user();
     $expectedPass = dj_admin_pass();
+
+    if ($expectedPass === '') {
+        http_response_code(500);
+        if ($api) {
+            header('Content-Type: application/json; charset=UTF-8');
+            echo json_encode(['error' => 'Configuration manquante: DJ_ADMIN_PASS.'], JSON_UNESCAPED_UNICODE);
+        } else {
+            header('Content-Type: text/html; charset=UTF-8');
+            echo '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Configuration requise</title></head><body><h1>Configuration requise</h1><p>Définissez la variable DJ_ADMIN_PASS.</p></body></html>';
+        }
+        exit;
+    }
 
     $isValid = $user !== null
         && $pass !== null

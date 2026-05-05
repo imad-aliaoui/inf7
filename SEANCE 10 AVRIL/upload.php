@@ -16,6 +16,9 @@ function upload_dj_photo(?array $file, ?string $existingPhoto = null): array
 
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $mime = $finfo->file($file['tmp_name']);
+    if ($mime === false) {
+        return [$existingPhoto, "Impossible de vérifier le type de fichier."];
+    }
 
     $allowed = [
         'image/jpeg' => 'jpg',
@@ -26,6 +29,10 @@ function upload_dj_photo(?array $file, ?string $existingPhoto = null): array
 
     if (!isset($allowed[$mime])) {
         return [$existingPhoto, 'Format de photo non autorisé.'];
+    }
+
+    if (getimagesize($file['tmp_name']) === false) {
+        return [$existingPhoto, "Le fichier n'est pas une image valide."];
     }
 
     $uploadDir = __DIR__ . '/uploads';

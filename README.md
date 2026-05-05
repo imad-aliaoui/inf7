@@ -5,7 +5,7 @@
 1. Importer la base `student_party.sql` située dans `SEANCE 10 AVRIL`.
 2. Installer les dépendances Twig :
    ```bash
-   composer install --prefer-source
+   composer install
    ```
 3. Démarrer un serveur local :
    ```bash
@@ -21,4 +21,4 @@
 Le back-office et l'API utilisent une authentification HTTP Basic.
 Variables d'environnement :
 - `DJ_ADMIN_USER` (défaut : `admin`)
-- `DJ_ADMIN_PASS` (défaut : `admin123`)
+- `DJ_ADMIN_PASS` (obligatoire)

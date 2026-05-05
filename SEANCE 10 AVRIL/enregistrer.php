@@ -47,7 +47,7 @@ if (empty($errors) && !$dj) {
 if (!empty($errors)) {
     $message = "Votre inscription n'a pas pu être enregistrée.";
 } elseif ($dj) {
-    $message = "Un DJ avec cet email est déjà inscrit. Merci de passer par l'administration pour une mise à jour.";
+    $message = "Votre demande a été reçue. Si un DJ est déjà enregistré avec cet email, aucune mise à jour n'a été effectuée. Contactez l'administration pour modifier les informations.";
 } else {
     $sql = "INSERT INTO djs
             (nom, prenom, email, telephone, portfolio, date_soiree, materiel, couleur, photo, nb_enceintes1, puissance1, nb_enceintes2, puissance2)
