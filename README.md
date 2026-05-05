@@ -22,3 +22,6 @@ Le back-office et l'API utilisent une authentification HTTP Basic.
 Variables d'environnement :
 - `DJ_ADMIN_USER` (défaut : `admin`)
 - `DJ_ADMIN_PASS` (obligatoire)
+
+### Uploads
+Les photos sont enregistrées dans `SEANCE 10 AVRIL/uploads` avec des permissions restrictives. Assurez-vous que l'utilisateur du serveur web dispose des droits nécessaires, ou adaptez les permissions/ownership selon votre environnement.
