@@ -37,7 +37,7 @@ function upload_dj_photo(?array $file, ?string $existingPhoto = null): array
 
     $uploadDir = __DIR__ . '/uploads';
     if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0750, true);
+        mkdir($uploadDir, 0755, true);
     }
 
     $filename = bin2hex(random_bytes(16)) . '.' . $allowed[$mime];
