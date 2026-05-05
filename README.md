@@ -2,14 +2,15 @@
 
 ## Formulaire DJ et back-office
 
-1. Importer la base `student_party.sql` située dans `SEANCE 10 AVRIL`.
+1. Importer la base `student_party.sql` située dans `TD NOTE 5 MAI`.
 2. Installer les dépendances Twig :
    ```bash
+   cd "TD NOTE 5 MAI"
    composer install
    ```
 3. Démarrer un serveur local :
    ```bash
-   php -S 127.0.0.1:8000 -t "SEANCE 10 AVRIL"
+   php -S 127.0.0.1:8000 -t "TD NOTE 5 MAI"
    ```
 
 ### Accès
@@ -24,4 +25,4 @@ Variables d'environnement :
 - `DJ_ADMIN_PASS` (obligatoire)
 
 ### Uploads
-Les photos sont enregistrées dans `SEANCE 10 AVRIL/uploads` (permissions 0755 par défaut). Adaptez les permissions/ownership selon votre environnement si vous devez restreindre l'accès ou servir les fichiers différemment.
+Les photos sont enregistrées dans `TD NOTE 5 MAI/uploads` (permissions 0755 par défaut). Adaptez les permissions/ownership selon votre environnement si vous devez restreindre l'accès ou servir les fichiers différemment.
